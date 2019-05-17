@@ -1,0 +1,249 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{21D844C5-CD2E-48AF-BE78-01DC95DB3D8F}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>Engine</RootNamespace>
+    <AssemblyName>Engine</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="Content\Shaders\ModelShadow.frag">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\Shaders\ModelShadow.vert">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\Shaders\Primitives.frag">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\Shaders\Primitives2D.vert">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\Shaders\Primitives3D.vert">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\Shaders\ShadowMap.frag">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\Shaders\ShadowMap.vert">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\Shaders\ShadowMapSkeletal.vert">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\Shaders\ShadowMapVisualization.frag">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\Shaders\Skeletal.vert">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\Shaders\Sprite.frag">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\Shaders\Sprite.vert">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Constants.cs" />
+    <Compile Include="Core\2D\SpriteModifiers.cs" />
+    <Compile Include="Core\DynamicComponent.cs" />
+    <Compile Include="Extensions.cs" />
+    <Compile Include="GLUtilities.cs" />
+    <Compile Include="Graphics\3D\Loaders\DaeLoader.cs" />
+    <Compile Include="Graphics\3D\ModelBatch.cs" />
+    <Compile Include="Graphics\3D\ModelHandle.cs" />
+    <Compile Include="Graphics\3D\Loaders\ObjLoader.cs" />
+    <Compile Include="Graphics\3D\ShadowMapVisualizer.cs" />
+    <Compile Include="Graphics\GLBuffer.cs" />
+    <Compile Include="Graphics\PrimitiveBuffer.cs" />
+    <Compile Include="Graphics\3D\PrimitiveRenderer3D.cs" />
+    <Compile Include="Input\ClickableSet.cs" />
+    <Compile Include="Input\Data\KeyboardData.cs" />
+    <Compile Include="Input\Data\KeyModifiers.cs" />
+    <Compile Include="Input\Data\KeyPress.cs" />
+    <Compile Include="Interfaces\2D\IBoundable2D.cs" />
+    <Compile Include="Interfaces\2D\IClickable.cs" />
+    <Compile Include="Interfaces\3D\IRenderable3D.cs" />
+    <Compile Include="Networking\GamePeer.cs" />
+    <Compile Include="Particles\Emitters\Emitter.cs" />
+    <Compile Include="Particles\Particle.cs" />
+    <Compile Include="Physics\PhysicsExtensions.cs" />
+    <Compile Include="Properties.cs" />
+    <Compile Include="Shapes\2D\Arc.cs" />
+    <Compile Include="Shapes\2D\Rectangle.cs" />
+    <Compile Include="Shapes\2D\ShapeHelper2D.cs" />
+    <Compile Include="Smoothers\3D\OrientationSmoother.cs" />
+    <Compile Include="Smoothers\3D\PositionSmoother3D.cs" />
+    <Compile Include="Smoothers\Smoother.cs" />
+    <Compile Include="Timing\RepeatingTimer.cs" />
+    <Compile Include="Timing\SingleTimer.cs" />
+    <Compile Include="Timing\Timer.cs" />
+    <Compile Include="Utility\Ease.cs" />
+    <Compile Include="Utility\XmlExtensions.cs" />
+    <Compile Include="View\Camera3D.cs" />
+    <Compile Include="Core\2D\Alignments.cs" />
+    <Compile Include="Core\2D\Bounds2D.cs" />
+    <Compile Include="Core\2D\Component2D.cs" />
+    <Compile Include="Core\2D\QuadSource.cs" />
+    <Compile Include="Core\2D\RenderTarget.cs" />
+    <Compile Include="Core\2D\RenderTargetFlags.cs" />
+    <Compile Include="Core\2D\SpriteText.cs" />
+    <Compile Include="Core\Color.cs" />
+    <Compile Include="ContentCache.cs" />
+    <Compile Include="Core\3D\Model.cs" />
+    <Compile Include="Core\2D\Sprite.cs" />
+    <Compile Include="Exceptions\RenderTargetException.cs" />
+    <Compile Include="Exceptions\ShaderException.cs" />
+    <Compile Include="Game.cs" />
+    <Compile Include="GLFW.cs" />
+    <Compile Include="Graphics\2D\Glyph.cs" />
+    <Compile Include="Graphics\3D\Mesh.cs" />
+    <Compile Include="Graphics\2D\SpriteBatch.cs" />
+    <Compile Include="Graphics\2D\SpriteFont.cs" />
+    <Compile Include="Graphics\Texture.cs" />
+    <Compile Include="Input\Data\FullInputData.cs" />
+    <Compile Include="Input\Data\InputBind.cs" />
+    <Compile Include="Input\Data\InputData.cs" />
+    <Compile Include="Input\Data\InputStates.cs" />
+    <Compile Include="Input\Data\InputTypes.cs" />
+    <Compile Include="Input\Data\MouseData.cs" />
+    <Compile Include="Input\InputHelper.cs" />
+    <Compile Include="Input\InputProcessor.cs" />
+    <Compile Include="Interfaces\2D\ILocatable.cs" />
+    <Compile Include="Interfaces\2D\IRenderable2D.cs" />
+    <Compile Include="Interfaces\2D\IRotatable.cs" />
+    <Compile Include="Interfaces\2D\IScalable2D.cs" />
+    <Compile Include="Interfaces\3D\IOrientable.cs" />
+    <Compile Include="Interfaces\3D\ITransformable3D.cs" />
+    <Compile Include="Interfaces\IColorable.cs" />
+    <Compile Include="Interfaces\IDynamic.cs" />
+    <Compile Include="Interfaces\2D\IPositionable2D.cs" />
+    <Compile Include="Interfaces\3D\IPositionable3D.cs" />
+    <Compile Include="Interfaces\IReceiver.cs" />
+    <Compile Include="Interfaces\IRenderTargetUser.cs" />
+    <Compile Include="Messaging\CoreMessageTypes.cs" />
+    <Compile Include="Messaging\MessageHandle.cs" />
+    <Compile Include="Messaging\MessageSystem.cs" />
+    <Compile Include="GL.cs" />
+    <Compile Include="Resolution.cs" />
+    <Compile Include="Shaders\Shader.cs" />
+    <Compile Include="Shaders\ShaderAttribute.cs" />
+    <Compile Include="Shaders\ShaderStages.cs" />
+    <Compile Include="Shaders\ShaderTypes.cs" />
+    <Compile Include="Shapes\2D\Circle.cs" />
+    <Compile Include="Shapes\2D\Line.cs" />
+    <Compile Include="Shapes\2D\Shape2D.cs" />
+    <Compile Include="Shapes\2D\ShapeTypes2D.cs" />
+    <Compile Include="Shapes\3D\Box.cs" />
+    <Compile Include="Shapes\3D\Shape3D.cs" />
+    <Compile Include="Shapes\3D\ShapeTypes3D.cs" />
+    <Compile Include="Shapes\3D\Sphere.cs" />
+    <Compile Include="UI\Canvas.cs" />
+    <Compile Include="UI\CanvasElement.cs" />
+    <Compile Include="Utility\JsonUtilities.cs" />
+    <Compile Include="Utility\Utilities.cs" />
+    <Compile Include="View\CameraController3D.cs" />
+    <Compile Include="Window.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="GlmSharp, Version=0.9.8.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\GlmSharp.0.9.8\lib\Net45\GlmSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="Jitter, Version=0.2.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\JitterPhysics.0.2.0.20\lib\net4\Jitter.dll</HintPath>
+    </Reference>
+    <Reference Include="Lidgren.Network, Version=2012.1.7.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Lidgren.Network.1.0.2\lib\net451\Lidgren.Network.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Content\Textures\Grey.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>xcopy /Y "$(SolutionDir)Engine\x86\glfw3.dll" "$(SolutionDir)Dungeon\bin\x86\Debug\x86\"
+xcopy /Y "$(SolutionDir)Engine\x64\glfw3.dll" "$(SolutionDir)Dungeon\bin\x64\Debug\x64\"</PreBuildEvent>
+  </PropertyGroup>
+</Project>
