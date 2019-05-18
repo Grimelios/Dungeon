@@ -17,7 +17,6 @@ using Engine.Utility;
 using Engine.View;
 using GlmSharp;
 using static Engine.GL;
-using static Engine.GLFW;
 
 namespace Dungeon
 {
@@ -36,8 +35,9 @@ namespace Dungeon
 		{
 			sb = new SpriteBatch();
 			camera = new Camera3D();
-			camera.Orientation *= quat.FromAxisAngle(0.8f, vec3.UnitX);
-			camera.Position = new vec3(0, 0, 4) * camera.Orientation;
+			camera.IsOrthographic = true;
+			camera.Orientation *= quat.FromAxisAngle(0, vec3.UnitX);
+			camera.Position = new vec3(0, 0, 1) * camera.Orientation;
 
 			mainTarget = new RenderTarget(Resolution.RenderWidth, Resolution.RenderHeight,
 				RenderTargetFlags.Color | RenderTargetFlags.Depth);
@@ -94,9 +94,13 @@ namespace Dungeon
 			glEnable(GL_CULL_FACE);
 			glDepthFunc(GL_LEQUAL);
 
+			var batch = ropeTester.Batch;
+
 			//renderTargetUsers.ForEach(u => u.DrawTargets());
-			//mainTarget.Apply();
+			batch.DrawTargets();
+			mainTarget.Apply();
 			//scene.ModelBatch.Draw(camera);
+			batch.Draw(camera);
 
 			glBindFramebuffer(GL_FRAMEBUFFER, 0);
 			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -105,8 +109,7 @@ namespace Dungeon
 			glDisable(GL_CULL_FACE);
 			glDepthFunc(GL_NEVER);
 			
-			//mainSprite.Draw(sb);
-			ropeTester.Draw(sb);
+			mainSprite.Draw(sb);
 			sb.Flush();
 		}
 	}

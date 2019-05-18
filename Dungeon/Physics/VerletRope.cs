@@ -37,7 +37,7 @@ namespace Dungeon.Physics
 		public void Update(float dt)
 		{
 			const int Iterations = 5;
-			const int Gravity = 15;
+			const int Gravity = 25;
 
 			// It's assumed that the first point is always fixed. The other endpoint may or may not be fixed.
 			for (int j = 1; j < Points.Length; j++)

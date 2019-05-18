@@ -17,7 +17,7 @@ namespace Dungeon.Entities.Core
 		public Scene()
 		{
 			entities = new List<Entity>();
-			ModelBatch = new ModelBatch(10000, 1000);
+			ModelBatch = new ModelBatch(100000, 10000);
 		}
 
 		public Camera3D Camera { get; set; }
