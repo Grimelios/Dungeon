@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Dungeon.Entities;
 using Dungeon.Entities.Core;
+using Dungeon.Physics;
 using Engine;
 using Engine.Core;
 using Engine.Core._2D;
@@ -29,6 +30,8 @@ namespace Dungeon
 		private Scene scene;
 		private List<IRenderTargetUser> renderTargetUsers;
 
+		private RopeTester ropeTester;
+
 		public MainGame() : base("Dungeon")
 		{
 			sb = new SpriteBatch();
@@ -52,19 +55,11 @@ namespace Dungeon
 			renderTargetUsers = new List<IRenderTargetUser>();
 			renderTargetUsers.Add(scene.ModelBatch);
 
+			ropeTester = new RopeTester();
+
 			MessageSystem.Subscribe(this, CoreMessageTypes.ResizeWindow, (messageType, data, dt) =>
 			{
 				mainSprite.ScaleTo(Resolution.WindowWidth, Resolution.WindowHeight);
-			});
-
-			MessageSystem.Subscribe(this, CoreMessageTypes.Keyboard, (messageType, data, dt) =>
-			{
-				KeyboardData keyboardData = (KeyboardData)data;
-
-				if (keyboardData.Query(GLFW_KEY_O, InputStates.PressedThisFrame))
-				{
-					camera.IsOrthographic = !camera.IsOrthographic;
-				}
 			});
 
 			MessageSystem.ProcessChanges();
@@ -88,6 +83,8 @@ namespace Dungeon
 			scene.Update(dt);
 			camera.Update(dt);
 
+			ropeTester.Update(dt);
+
 			MessageSystem.ProcessChanges();
 		}
 
@@ -97,9 +94,9 @@ namespace Dungeon
 			glEnable(GL_CULL_FACE);
 			glDepthFunc(GL_LEQUAL);
 
-			renderTargetUsers.ForEach(u => u.DrawTargets());
-			mainTarget.Apply();
-			scene.ModelBatch.Draw(camera);
+			//renderTargetUsers.ForEach(u => u.DrawTargets());
+			//mainTarget.Apply();
+			//scene.ModelBatch.Draw(camera);
 
 			glBindFramebuffer(GL_FRAMEBUFFER, 0);
 			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -108,7 +105,8 @@ namespace Dungeon
 			glDisable(GL_CULL_FACE);
 			glDepthFunc(GL_NEVER);
 			
-			mainSprite.Draw(sb);
+			//mainSprite.Draw(sb);
+			ropeTester.Draw(sb);
 			sb.Flush();
 		}
 	}
