@@ -9,6 +9,7 @@ namespace Engine.Shapes._2D
 	public enum ShapeTypes2D
 	{
 		Arc,
+		Capsule,
 		Circle,
 		Rectangle
 	}

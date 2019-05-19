@@ -34,18 +34,6 @@ namespace Engine.Shapes._2D
 			Height = height;
 		}
 
-		public float X
-		{
-			get => Left;
-			set => Left = value;
-		}
-
-		public float Y
-		{
-			get => Top;
-			set => Top = value;
-		}
-
 		public float Width { get; set; }
 		public float Height { get; set; }
 
@@ -75,10 +63,10 @@ namespace Engine.Shapes._2D
 
 		public vec2[] Corners => new []
 		{
-			new vec2(X, Y),
-			new vec2(Right, Y),
+			new vec2(Left, Top),
+			new vec2(Right, Top),
 			new vec2(Right, Bottom),
-			new vec2(X, Bottom)
+			new vec2(Left, Bottom)
 		};
 
 		public override bool Contains(vec2 p)

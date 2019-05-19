@@ -80,9 +80,13 @@
     <Compile Include="Entities\PlayerControls.cs" />
     <Compile Include="Entities\PlayerSkills.cs" />
     <Compile Include="MainGame.cs" />
+    <Compile Include="Physics\2D\Body2D.cs" />
+    <Compile Include="Physics\2D\Manifold2D.cs" />
+    <Compile Include="Physics\2D\World2D.cs" />
     <Compile Include="Physics\RopeTester.cs" />
     <Compile Include="Physics\VerletPoint.cs" />
     <Compile Include="Physics\VerletRope.cs" />
+    <Compile Include="Physics\2D\PhysicsTester.cs" />
     <Compile Include="Program.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -28,6 +28,18 @@ namespace Engine.Shapes._2D
 			set => position = value;
 		}
 
+		public float X
+		{
+			get => position.x;
+			set => position.x = value;
+		}
+
+		public float Y
+		{
+			get => position.y;
+			set => position.y = value;
+		}
+
 		public float Rotation { get; set; }
 
 		public abstract bool Contains(vec2 p);

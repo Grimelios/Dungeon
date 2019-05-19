@@ -143,6 +143,7 @@
     <Compile Include="Physics\PhysicsExtensions.cs" />
     <Compile Include="Properties.cs" />
     <Compile Include="Shapes\2D\Arc.cs" />
+    <Compile Include="Shapes\2D\Capsule.cs" />
     <Compile Include="Shapes\2D\Rectangle.cs" />
     <Compile Include="Shapes\2D\ShapeHelper2D.cs" />
     <Compile Include="Smoothers\3D\OrientationSmoother.cs" />

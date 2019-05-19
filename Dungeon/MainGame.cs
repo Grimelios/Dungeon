@@ -1,16 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Dungeon.Entities;
 using Dungeon.Entities.Core;
-using Dungeon.Physics;
+using Dungeon.Physics._2D;
 using Engine;
-using Engine.Core;
 using Engine.Core._2D;
 using Engine.Graphics._2D;
-using Engine.Input.Data;
 using Engine.Interfaces;
 using Engine.Messaging;
 using Engine.Utility;
@@ -29,7 +24,7 @@ namespace Dungeon
 		private Scene scene;
 		private List<IRenderTargetUser> renderTargetUsers;
 
-		private RopeTester ropeTester;
+		private PhysicsTester physicsTester;
 
 		public MainGame() : base("Dungeon")
 		{
@@ -55,7 +50,7 @@ namespace Dungeon
 			renderTargetUsers = new List<IRenderTargetUser>();
 			renderTargetUsers.Add(scene.ModelBatch);
 
-			ropeTester = new RopeTester();
+			physicsTester = new PhysicsTester();
 
 			MessageSystem.Subscribe(this, CoreMessageTypes.ResizeWindow, (messageType, data, dt) =>
 			{
@@ -80,10 +75,9 @@ namespace Dungeon
 
 		protected override void Update(float dt)
 		{
-			scene.Update(dt);
+			//scene.Update(dt);
 			camera.Update(dt);
-
-			ropeTester.Update(dt);
+			physicsTester.Update(dt);
 
 			MessageSystem.ProcessChanges();
 		}
@@ -93,14 +87,10 @@ namespace Dungeon
 			glEnable(GL_DEPTH_TEST);
 			glEnable(GL_CULL_FACE);
 			glDepthFunc(GL_LEQUAL);
-
-			var batch = ropeTester.Batch;
-
+			
 			//renderTargetUsers.ForEach(u => u.DrawTargets());
-			batch.DrawTargets();
-			mainTarget.Apply();
+			//mainTarget.Apply();
 			//scene.ModelBatch.Draw(camera);
-			batch.Draw(camera);
 
 			glBindFramebuffer(GL_FRAMEBUFFER, 0);
 			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -108,8 +98,9 @@ namespace Dungeon
 			glDisable(GL_DEPTH_TEST);
 			glDisable(GL_CULL_FACE);
 			glDepthFunc(GL_NEVER);
-			
-			mainSprite.Draw(sb);
+
+			//mainSprite.Draw(sb);
+			physicsTester.Draw(sb);
 			sb.Flush();
 		}
 	}

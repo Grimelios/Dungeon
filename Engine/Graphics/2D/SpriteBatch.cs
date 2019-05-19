@@ -166,6 +166,39 @@ namespace Engine.Graphics._2D
 			Draw(bounds.ToRectangle(), color);
 		}
 
+		public void Draw(Capsule capsule, int segments, Color color)
+		{
+			Apply(primitiveShader, GL_LINE_LOOP);
+
+			float increment = Constants.Pi / segments;
+			float radius = capsule.Radius;
+
+			vec2[] points = new vec2[(segments + 1) * 2];
+			vec2 h = new vec2(0, capsule.Height / 2);
+
+			for (int i = 0; i <= segments; i++)
+			{
+				points[i] = Utilities.Direction(increment * i + Constants.Pi) * radius - h;
+				points[i + segments + 1] = Utilities.Direction(increment * i) * radius + h;
+			}
+
+			float[] data = new float[points.Length * 3];
+			float f = color.ToFloat();
+
+			for (int i = 0; i < points.Length; i++)
+			{
+				vec2 p = points[i] + capsule.Position;
+
+				int start = i * 3;
+
+				data[start] = p.x;
+				data[start + 1] = p.y;
+				data[start + 2] = f;
+			}
+
+			Buffer(data);
+		}
+
 		public void Draw(Rectangle rect, Color color)
 		{
 			Apply(primitiveShader, GL_LINE_LOOP);

@@ -81,7 +81,7 @@ namespace Engine
 				return;
 			}
 
-			window = new Window(title, 800, 600, address);
+			window = new Window(title, Resolution.WindowWidth, Resolution.WindowHeight, address);
 			inputProcessor = new InputProcessor();
 
 			glfwMakeContextCurrent(address);
